@@ -1,9 +1,9 @@
-import logo from "@/assets/rjd-logo.jpeg.asset.json";
+import logoUrl from "@/assets/rjd-logo.jpeg";
 
 export function Logo({ className = "h-10 w-10" }: { className?: string }) {
   return (
     <img
-      src={logo.url}
+      src={logoUrl}
       alt="RJD Group"
       width={80}
       height={80}

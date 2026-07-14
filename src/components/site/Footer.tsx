@@ -1,9 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram } from "lucide-react";
 import { Logo } from "./Logo";
-import { SITE, whatsappUrl } from "@/lib/site";
+import { whatsappUrl } from "@/lib/site";
+import { useSiteSettings } from "@/hooks/use-site-settings";
 
 export function Footer() {
+  const s = useSiteSettings();
   return (
     <footer className="mt-24 bg-brand-ink text-white/80">
       <div className="container-rjd grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
@@ -23,7 +25,7 @@ export function Footer() {
           </p>
           <div className="mt-5 flex gap-3">
             <a
-              href="https://www.linkedin.com/company/rjdgroupsac"
+              href={s.linkedin_url}
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
@@ -32,7 +34,7 @@ export function Footer() {
               <Linkedin size={16} />
             </a>
             <a
-              href="https://www.facebook.com/rjdgroupsac"
+              href={s.facebook_url}
               target="_blank"
               rel="noreferrer"
               aria-label="Facebook"
@@ -41,7 +43,7 @@ export function Footer() {
               <Facebook size={16} />
             </a>
             <a
-              href="https://www.instagram.com/rjdgroupsac"
+              href={s.instagram_url}
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
@@ -88,14 +90,14 @@ export function Footer() {
           <ul className="space-y-3 text-sm">
             <li className="flex items-start gap-3">
               <Phone size={16} className="mt-0.5 text-brand-gold shrink-0" />
-              <a href={`tel:+51${SITE.phone}`} className="hover:text-brand-gold">
-                +51 {SITE.phoneDisplay}
+              <a href={`tel:+${s.phone}`} className="hover:text-brand-gold">
+                +51 {s.phone_display}
               </a>
             </li>
             <li className="flex items-start gap-3">
               <Mail size={16} className="mt-0.5 text-brand-gold shrink-0" />
-              <a href={`mailto:${SITE.email}`} className="hover:text-brand-gold break-all">
-                {SITE.email}
+              <a href={`mailto:${s.email}`} className="hover:text-brand-gold break-all">
+                {s.email}
               </a>
             </li>
             <li className="flex items-start gap-3">
@@ -104,7 +106,7 @@ export function Footer() {
             </li>
           </ul>
           <a
-            href={whatsappUrl()}
+            href={whatsappUrl(s.whatsapp_message, s.phone)}
             target="_blank"
             rel="noreferrer"
             className="mt-5 inline-flex items-center justify-center rounded-full bg-brand-gold px-4 py-2 text-sm font-semibold text-white hover:brightness-95"

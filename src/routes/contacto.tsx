@@ -5,7 +5,8 @@ import { Phone, Mail, MessageCircle, CheckCircle2, Send } from "lucide-react";
 import { SiteLayout } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
-import { SITE, whatsappUrl } from "@/lib/site";
+import { whatsappUrl } from "@/lib/site";
+import { useSiteSettings } from "@/hooks/use-site-settings";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
@@ -18,6 +19,7 @@ export const Route = createFileRoute("/contacto")({
 });
 
 function Contacto() {
+  const s = useSiteSettings();
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", service: "Consultoría", message: "" });
 
@@ -28,7 +30,7 @@ function Contacto() {
       `Servicio de interés: ${form.service}.\n` +
       `Correo: ${form.email}${form.phone ? ` · Tel: ${form.phone}` : ""}.\n` +
       `Mensaje: ${form.message}`;
-    window.open(whatsappUrl(msg), "_blank");
+    window.open(whatsappUrl(msg, s.phone), "_blank");
     setSent(true);
   };
 
@@ -62,8 +64,8 @@ function Contacto() {
                     </span>
                     <div>
                       <div className="text-xs uppercase tracking-wider text-white/60">Teléfono</div>
-                      <a href={`tel:+51${SITE.phone}`} className="mt-0.5 block font-semibold hover:text-brand-gold">
-                        +51 {SITE.phoneDisplay}
+                      <a href={`tel:+${s.phone}`} className="mt-0.5 block font-semibold hover:text-brand-gold">
+                        +51 {s.phone_display}
                       </a>
                     </div>
                   </li>
@@ -73,8 +75,8 @@ function Contacto() {
                     </span>
                     <div>
                       <div className="text-xs uppercase tracking-wider text-white/60">Correo</div>
-                      <a href={`mailto:${SITE.email}`} className="mt-0.5 block font-semibold hover:text-brand-gold break-all">
-                        {SITE.email}
+                      <a href={`mailto:${s.email}`} className="mt-0.5 block font-semibold hover:text-brand-gold break-all">
+                        {s.email}
                       </a>
                     </div>
                   </li>
@@ -84,7 +86,7 @@ function Contacto() {
                     </span>
                     <div>
                       <div className="text-xs uppercase tracking-wider text-white/60">WhatsApp</div>
-                      <a href={whatsappUrl()} target="_blank" rel="noreferrer" className="mt-0.5 block font-semibold hover:text-brand-gold">
+                      <a href={whatsappUrl(s.whatsapp_message, s.phone)} target="_blank" rel="noreferrer" className="mt-0.5 block font-semibold hover:text-brand-gold">
                         Iniciar conversación
                       </a>
                     </div>

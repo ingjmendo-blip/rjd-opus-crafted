@@ -24,7 +24,7 @@ export const updateSiteSettings = createServerFn({ method: "POST" })
     ];
     const clean: Record<string, unknown> = {};
     for (const k of allowed) if (k in data) clean[k] = data[k];
-    const { error } = await context.supabase.from("site_settings").update(clean).eq("id", 1);
+    const { error } = await context.supabase.from("site_settings").update(clean as any).eq("id", 1);
     if (error) throw new Error(error.message);
     return { ok: true };
   });

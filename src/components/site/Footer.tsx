@@ -22,16 +22,33 @@ export function Footer() {
             estándares de calidad y seguridad.
           </p>
           <div className="mt-5 flex gap-3">
-            {[Linkedin, Facebook, Instagram].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                aria-label="Red social"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-brand-gold hover:text-brand-gold transition"
-              >
-                <Icon size={16} />
-              </a>
-            ))}
+            <a
+              href="https://www.linkedin.com/company/rjdgroupsac"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-brand-gold hover:text-brand-gold transition"
+            >
+              <Linkedin size={16} />
+            </a>
+            <a
+              href="https://www.facebook.com/rjdgroupsac"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-brand-gold hover:text-brand-gold transition"
+            >
+              <Facebook size={16} />
+            </a>
+            <a
+              href="https://www.instagram.com/rjdgroupsac"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-brand-gold hover:text-brand-gold transition"
+            >
+              <Instagram size={16} />
+            </a>
           </div>
         </div>
 

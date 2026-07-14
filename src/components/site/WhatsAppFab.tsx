@@ -1,9 +1,11 @@
 import { whatsappUrl } from "@/lib/site";
+import { useSiteSettings } from "@/hooks/use-site-settings";
 
 export function WhatsAppFab() {
+  const s = useSiteSettings();
   return (
     <a
-      href={whatsappUrl()}
+      href={whatsappUrl(s.whatsapp_message, s.phone)}
       target="_blank"
       rel="noreferrer"
       aria-label="Escribir por WhatsApp"

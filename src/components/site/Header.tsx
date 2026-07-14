@@ -36,9 +36,9 @@ export function Header() {
           : "bg-background/60 backdrop-blur-sm"
       }`}
     >
-      <div className="container-rjd flex h-20 items-center justify-between">
+      <div className="container-rjd flex h-24 items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group min-w-0">
-          <Logo className="h-11 w-11 shrink-0" />
+          <Logo className="h-16 w-16 shrink-0" />
           <div className="hidden sm:flex flex-col leading-none min-w-0">
             <span className="font-display font-bold text-brand-blue text-lg tracking-tight">
               RJD GROUP
